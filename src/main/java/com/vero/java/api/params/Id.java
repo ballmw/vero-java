@@ -5,9 +5,13 @@ package com.vero.java.api.params;
  *
  * @author szagriichuk.
  */
-public class Id extends Param<Integer> {
-    public Id(Integer param) {
+public class Id extends Param<String> {
+
+    public Id(String param) {
         super(param);
+    }
+    public Id(Integer param) {
+        super(param.toString());
     }
 
     @Override

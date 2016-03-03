@@ -3,6 +3,7 @@ package com.vero.java.api;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.vero.java.api.params.*;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -68,11 +69,12 @@ public class VeroApiTest {
     }
 
     @Test
+    @Ignore
     public void testGetById() throws Exception {
         VeroApi veroApi = new VeroApi("KEY");
         try {
             JsonNode data = veroApi.customers().getById(new Id(12345678));
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(8);
             Assert.assertNotNull(data);
         } catch (Exception e) {
             fail("The add user is fail");

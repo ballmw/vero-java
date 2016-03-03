@@ -1,11 +1,15 @@
 apply plugin: 'java'
+apply plugin: 'maven'
 
-jar.version = '0.1.1'
+group = "vero"
+version = '0.1.1'
+jar.version = version
 sourceCompatibility = 1.7
 targetCompatibility=1.7
 
 repositories {
     jcenter()
+    mavenLocal()
 }
 
 dependencies {
