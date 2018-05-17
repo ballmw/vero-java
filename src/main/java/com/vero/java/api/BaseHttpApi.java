@@ -12,6 +12,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.nio.entity.NStringEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ import static com.vero.java.http.HttpExecutor.execute;
  * @author szagriichuk.
  */
 abstract class BaseHttpApi extends Key {
-    static final Logger LOG = LoggerFactory.getLogger("Http API");
+    static final Logger LOG = LoggerFactory.getLogger(BaseHttpApi.class);
 
     public BaseHttpApi(String key) {
         super(key);
@@ -56,6 +57,7 @@ abstract class BaseHttpApi extends Key {
         HttpEntity entity = createHttpEntity(postData);
         if (entity != null) {
             post.setEntity(entity);
+            post.addHeader(new BasicHeader("Content-Type", "application/json"));
         }
         return post;
     }
@@ -66,9 +68,12 @@ abstract class BaseHttpApi extends Key {
 
     HttpEntityEnclosingRequestBase createPutRequest(String postData, String url) {
         HttpEntityEnclosingRequestBase post = (HttpEntityEnclosingRequestBase) HttpMethod.PUT.create(url);
+
+
         HttpEntity entity = createHttpEntity(postData);
         if (entity != null) {
             post.setEntity(entity);
+            post.addHeader(new BasicHeader("Content-Type", "application/json"));
         }
         return post;
     }

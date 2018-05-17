@@ -9,6 +9,8 @@ import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -18,6 +20,7 @@ import java.io.IOException;
  * @author szagriichuk.
  */
 public final class HttpExecutor {
+    static final Logger LOG = LoggerFactory.getLogger(HttpExecutor.class);
 
     public static void execute(HttpRequestBase method, final TextResponseCallBack callback) {
         final CloseableHttpAsyncClient httpAsyncClient = HttpAsyncClients.createDefault();
